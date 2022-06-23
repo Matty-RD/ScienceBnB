@@ -1,0 +1,7 @@
+form {
+    display: flex;
+    align-items: center;
+    background-color: grey;
+    color: blue;
+    height: 200px;
+}
