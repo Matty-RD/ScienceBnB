@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Test.associate = function(models) {
     Test.belongsTo(models.User, {foreignKey: 'userId'})
-    Test.hasMany(models.Test, {foreignKey: 'testId'})
     Test.hasMany(models.Enlist, {foreignKey: 'testId'})
   };
   return Test;
