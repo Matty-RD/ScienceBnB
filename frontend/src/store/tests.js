@@ -1,4 +1,4 @@
-import { csrfFetch } from './csrf';
+import {csrfFetch} from './csrf';
 
 const GET_ALL_TESTS = 'tests/GET_ALL_TESTS';
 const CREATE_TEST = 'tests/CREATE_TEST';
@@ -6,12 +6,12 @@ const CREATE_TEST = 'tests/CREATE_TEST';
 //Action Creator
 const getTests = (tests) => ({
     type: GET_ALL_TESTS,
-    tests
+    tests,
 })
 
 const createTests = (createdTest) => ({
-    type: GET_ALL_TESTS,
-    test
+    type: CREATE_TEST,
+    createdTest
 })
 
 //Thunks
@@ -32,6 +32,7 @@ export const createTestThunk = (createdTest) => async(dispatch) => {
   if (response.ok) {
     const createdTest = await response.json();
     dispatch(createTests(createdTest));
+    return createdTest;
   }
 };
 
@@ -41,14 +42,19 @@ export const testReducer = (state = initialState, action) => {
     let newState = {...state};
     switch(action.type) {
         case GET_ALL_TESTS:
+            console.log(action.tests)
             action.tests.forEach((test) => {
-                newState[test.id] = test;
+               return newState[test.id] = test;
             });
             return newState;
         case CREATE_TEST:
-            newState = Object.assign({}, state);
-            newState.test = action.payload;
-            return newState;
+            if (!state[action.createdTest.id]) {
+                newState = {
+                  ...state,
+                  [action.createdTest.id]: action.createdTest,
+                };
+            }
+            return newState
         default:
             return state;
     }

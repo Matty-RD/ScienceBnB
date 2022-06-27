@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const asyncHandler = require("express-async-handler");
-const { testReducer } = require('../../../frontend/src/store/tests');
 const db = require("../../db/models");
 
 router.get('/', asyncHandler(async(req,res) => {
@@ -9,8 +8,17 @@ router.get('/', asyncHandler(async(req,res) => {
 }));
 
 router.post('/create', asyncHandler(async(req,res) => {
-    console.log('Route Hit');
-    const newTest = await testReducer.create(req.body);
+    const {userId, address, city, state, country, name, details, pay} = req.body
+    const newTest = await db.Test.create({
+        userId: 1,
+        address: "test",
+        city: "test",
+        state: "test",
+        country: "test",
+        name,
+        details,
+        pay: 20
+    });
     return res.json(newTest)
 }));
 
