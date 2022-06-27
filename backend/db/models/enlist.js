@@ -1,12 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const enlist = sequelize.define('enlist', {
+  const Enlist = sequelize.define('Enlist', {
     testId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     startDate: DataTypes.STRING
   }, {});
-  enlist.associate = function(models) {
-    // associations can be defined here
+  Enlist.associate = function(models) {
+    Enlist.belongsTo(models.Test, {foreignKey: 'testId'})
+    Enlist.belongsTo(models.User, {foreignKey: 'userId'})
   };
-  return enlist;
+  return Enlist;
 };

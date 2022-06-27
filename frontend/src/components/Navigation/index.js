@@ -17,6 +17,8 @@ function Navigation({ isLoaded }){
       <>
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/tests">Tests</NavLink>
+        <NavLink to="/create">Create a Test</NavLink>
       </>
     );
   }

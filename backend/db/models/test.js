@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     pay: DataTypes.INTEGER
   }, {});
   Test.associate = function(models) {
-    // associations can be defined here
+    Test.belongsTo(models.User, {foreignKey: 'userId'})
+    Test.hasMany(models.Enlist, {foreignKey: 'testId'})
   };
   return Test;
 };
