@@ -19,13 +19,13 @@ router.post('/create', asyncHandler(async(req,res) => {
     const {userId, address, city, state, country, name, details, pay} = req.body
     const newTest = await db.Test.create({
         userId,
-        address: "test",
-        city: "test",
-        state: "test",
-        country: "test",
+        address,
+        city,
+        state,
+        country,
         name,
         details,
-        pay: 20
+        pay
     });
     return res.json(newTest)
 }));

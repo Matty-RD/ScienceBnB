@@ -19,7 +19,7 @@ function TestsPage() {
         return <ul key={test.id}>
             <li>{test.name}</li>
             <li>{test.details}</li>
-            <NavLink to={`/test/${test.id}`}>Edit</NavLink>
+            <button><NavLink to={`/test/${test.id}`}>Edit</NavLink></button>
           </ul>
         })}
       </>

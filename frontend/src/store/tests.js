@@ -82,7 +82,7 @@ export const updateTestThunk = (updatedTest, id) => async(dispatch) => {
       if (response.ok) {
         const test = await response.json();
         dispatch(updateTest(test));
-        return;
+        return test;
       }
     }
 
@@ -106,8 +106,12 @@ export const testReducer = (state = initialState, action) => {
             }
             return newState
         case UPDATE_TEST:
-              newState = Object.assign({}, state);
-              newState.test = null;
+              if (!state[action.test.id]) {
+                newState = {
+                  ...state,
+                  [action.test.id]: action.test,
+                };
+            }
             return newState
         case DELETE_TEST:
             delete newState[action.test.id]

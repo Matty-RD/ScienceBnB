@@ -37,8 +37,8 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fa-solid fa-atom"></i>
       </button>
-      <NavLink to="/tests"  className="navbar">Tests</NavLink>
-      <NavLink to="/create"  className="navbar">Create Tests</NavLink>
+      <button><NavLink to="/tests"  className="navbar">Tests</NavLink></button>
+      <button><NavLink to="/create"  className="navbar">Create Tests</NavLink></button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>

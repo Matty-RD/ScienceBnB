@@ -38,7 +38,7 @@ function App() {
           <Route path="/test/:id">
             <TestEditPage />
           </Route>
-          <Route path="/home">
+          <Route path="/">
             <HomePage />
           </Route>
         </Switch>

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { getTest, updateTestThunk, deleteTestId } from '../../store/tests';
+import { useState} from 'react';
+import { updateTestThunk, deleteTestId } from '../../store/tests';
 import { useHistory, useParams } from 'react-router-dom';
 
 function TestEditPage() {
@@ -28,9 +28,9 @@ function TestEditPage() {
   const updateDetails= (e) => setDetails(e.target.value);
   const updatePay = (e) => setPay(e.target.value);
 
-  useEffect(() => {
-    dispatch(getTest(id))
-  },[dispatch, id])
+  // useEffect(() => {
+  //   dispatch(getTest(id))
+  // },[dispatch, id])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,14 +65,14 @@ function TestEditPage() {
 
     return (
       <form className='test-form' onSubmit={handleSubmit}>
-        <h1>Edit a Quesiton</h1>
-        <input type="text" placeholder="Address" value={address} onChange={updateAddress}/>
-        <input type="text" placeholder="City" value={city} onChange={updateCity}/>
-        <input type="text" placeholder="State" value={state} onChange={updateState}/>
-        <input type="text" placeholder="Country"value={country} onChange={updateCountry}/>
+        <h1>Edit a Test</h1>
+        <input type="text" placeholder="Address" value={address} onChange={updateAddress}required/>
+        <input type="text" placeholder="City" value={city} onChange={updateCity}required/>
+        <input type="text" placeholder="State" value={state} onChange={updateState}required/>
+        <input type="text" placeholder="Country"value={country} onChange={updateCountry}required/>
         <input type="text" placeholder="Name" value={name} onChange={updateName} required/>
         <input type="text" placeholder="Details" value={details} onChange={updateDetails} required/>
-        <input type="number" placeholder="Pay" value={pay} onChange={updatePay}/>
+        <input type="number" placeholder="Pay" value={pay} onChange={updatePay}required/>
         <button type="submit">Submit Test</button>
         <button type="button" onClick={handleCancelClickCancel}>Cancel</button>
         <button type="button" onClick={handleCancelClickDelete}>Delete</button>
