@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     User.hasMany(models.Test, {foreignKey: 'userId'})
-    User.hasOne(models.Enlist, {foreignKey: 'userId'})
+    User.hasMany(models.Enlist, {foreignKey: 'userId'})
     User.hasMany(models.Review, {foreignKey: 'userId'})
   };
 

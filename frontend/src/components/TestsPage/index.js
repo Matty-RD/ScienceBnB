@@ -1,28 +1,66 @@
-import { getTestsThunk } from '../../store/tests'
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import { getTestsThunk } from "../../store/tests";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 function TestsPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const testsObject = useSelector(state => state.tests);
+  const sessionUser = useSelector((state) => state.session.user);
+  const testsObject = useSelector((state) => state.tests);
   const testsArray = Object.values(testsObject);
 
-    useEffect(() => {
-        dispatch(getTestsThunk())
-      },[dispatch])
+  useEffect(() => {
+    dispatch(getTestsThunk());
+  }, [dispatch]);
+
+  if (sessionUser) {
+    return (
+      <>
+        {testsObject &&
+          testsArray.map((test) => {
+            const handleClick = (e) => {
+              e.preventDefault();
+              history.push(`/test/${test.id}`);
+            };
+
+            return (
+              <ul key={test.id}>
+                <li>{test.name}</li>
+                <li>{test.details}</li>
+                <button type="button" onClick={handleClick}>
+                  Edit
+                </button>
+              </ul>
+            );
+          })}
+      </>
+    );
+
+  } else {
 
     return (
       <>
-      {testsObject && testsArray.map(test => {
-        return <ul key={test.id}>
-            <li>{test.name}</li>
-            <li>{test.details}</li>
-            <button><NavLink to={`/test/${test.id}`}>Edit</NavLink></button>
-          </ul>
-        })}
+        {testsObject &&
+          testsArray.map((test) => {
+            const handleClick = (e) => {
+              e.preventDefault();
+              history.push(`/login`);
+            };
+
+            return (
+              <ul key={test.id}>
+                <li>{test.name}</li>
+                <li>{test.details}</li>
+                <button type="button" onClick={handleClick}>
+                  Login to Edit.
+                </button>
+              </ul>
+            );
+          })}
       </>
     );
+  }
 }
-  export default TestsPage;
+export default TestsPage;

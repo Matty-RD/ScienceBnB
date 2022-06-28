@@ -51,12 +51,12 @@ function TestEditPage() {
     history.push("/tests");
   };
 
-  const handleCancelClickCancel = (e) => {
+  const handleClickCancel = (e) => {
     e.preventDefault();
     history.push("/tests");
   };
 
-  const handleCancelClickDelete = (e) => {
+  const handleClickDelete = (e) => {
     e.preventDefault();
     dispatch(deleteTestId(test, id))
     history.push("/tests");
@@ -74,8 +74,8 @@ function TestEditPage() {
         <input type="text" placeholder="Details" value={details} onChange={updateDetails} required/>
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay}required/>
         <button type="submit">Submit Test</button>
-        <button type="button" onClick={handleCancelClickCancel}>Cancel</button>
-        <button type="button" onClick={handleCancelClickDelete}>Delete</button>
+        <button type="button" onClick={handleClickCancel}>Cancel</button>
+        <button type="button" onClick={handleClickDelete}>Delete</button>
       </form>
   );
 }

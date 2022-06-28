@@ -1,10 +1,32 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
+  const history = useHistory();
+
+  const handleClickHome = (e) => {
+    e.preventDefault();
+    history.push("/home");
+  };
+
+  const handleClickLogin = (e) => {
+    e.preventDefault();
+    history.push("/login");
+  };
+
+  const handleClickSignup = (e) => {
+    e.preventDefault();
+    history.push("/signup");
+  };
+
+  const handleClickTests = (e) => {
+    e.preventDefault();
+    history.push("/tests");
+  };
+
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -15,9 +37,9 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <button><NavLink to="/login" className="navbar">Log In</NavLink></button>
-        <button><NavLink to="/signup"  className="navbar">Sign Up</NavLink></button>
-        <button><NavLink to="/tests"  className="navbar">Tests</NavLink></button>
+        <button onClick={handleClickLogin}>Log In</button>
+        <button onClick={handleClickSignup}>Sign Up</button>
+        <button onClick={handleClickTests}>Tests</button>
       </>
     );
   }
@@ -25,7 +47,7 @@ function Navigation({ isLoaded }){
   return (
     <ul>
       <li>
-      <button><NavLink exact to="/home">Home</NavLink></button>
+        <button onClick={handleClickHome}>Home</button>
         {isLoaded && sessionLinks}
       </li>
     </ul>

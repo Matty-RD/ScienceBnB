@@ -62,7 +62,7 @@ export const createTestThunk = (createdTest) => async(dispatch) => {
 
 export const deleteTestId = (test, id) => async(dispatch) => {
   const response = await csrfFetch(`/api/tests/${id}`, {
-    method: 'delete',
+    method: 'DELETE',
  });
  if(response.ok) {
   const delTest = await response.json();
@@ -71,13 +71,13 @@ export const deleteTestId = (test, id) => async(dispatch) => {
  }
 };
 
-export const updateTestThunk = (updatedTest, id) => async(dispatch) => {
+export const updateTestThunk = (test, id) => async(dispatch) => {
     const response = await csrfFetch(`/api/tests/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedTest),
+        body: JSON.stringify(test),
       });
       if (response.ok) {
         const test = await response.json();
@@ -106,12 +106,7 @@ export const testReducer = (state = initialState, action) => {
             }
             return newState
         case UPDATE_TEST:
-              if (!state[action.test.id]) {
-                newState = {
-                  ...state,
-                  [action.test.id]: action.test,
-                };
-            }
+                newState = {...state, [action.test.id]: action.test,};
             return newState
         case DELETE_TEST:
             delete newState[action.test.id]

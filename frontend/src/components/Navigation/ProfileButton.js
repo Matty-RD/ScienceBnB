@@ -1,7 +1,7 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -32,13 +32,23 @@ function ProfileButton({ user }) {
     history.push("/home");
   };
 
+  const handleClickTests = (e) => {
+    e.preventDefault();
+    history.push(`/tests`);
+  };
+
+  const handleClickCreate = (e) => {
+    e.preventDefault();
+    history.push(`/create`);
+  };
+
   return (
     <>
       <button onClick={openMenu}>
         <i className="fa-solid fa-atom"></i>
       </button>
-      <button><NavLink to="/tests"  className="navbar">Tests</NavLink></button>
-      <button><NavLink to="/create"  className="navbar">Create Tests</NavLink></button>
+      <button onClick={handleClickTests}>Tests</button>
+      <button onClick={handleClickCreate}>Create Tests</button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
