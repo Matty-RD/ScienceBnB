@@ -1,22 +1,24 @@
-import { createTestThunk } from '../../store/tests'
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import './TestFormPage.css';
+import { useState, useEffect } from 'react';
+import { getTest, updateTestThunk, deleteTestId } from '../../store/tests';
+import { useHistory, useParams } from 'react-router-dom';
 
-function TestFormPage() {
+function TestEditPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {id} = useParams();
   const user = useSelector(state => state.session.user)
+  const test = useSelector(state => state.tests)
+  const singleTest = test[id]
 
   const[userId] = useState(user.id);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [name, setName] = useState("");
-  const [details, setDetails] = useState("");
-  const [pay, setPay] = useState(0);
+  const [address, setAddress] = useState(singleTest.address);
+  const [city, setCity] = useState(singleTest.city);
+  const [state, setState] = useState(singleTest.state);
+  const [country, setCountry] = useState(singleTest.country);
+  const [name, setName] = useState(singleTest.name);
+  const [details, setDetails] = useState(singleTest.details);
+  const [pay, setPay] = useState(singleTest.pay);
 
   const updateAddress = (e) => setAddress(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
@@ -26,9 +28,15 @@ function TestFormPage() {
   const updateDetails= (e) => setDetails(e.target.value);
   const updatePay = (e) => setPay(e.target.value);
 
+  useEffect(() => {
+    dispatch(getTest(id))
+  },[dispatch, id])
 
   const handleSubmit = async (e) => {
-    const createdTest = {
+    e.preventDefault();
+
+    const updatedTest = {
+      id,
       userId,
       address,
       city,
@@ -39,20 +47,26 @@ function TestFormPage() {
       pay
     };
     e.preventDefault();
-    dispatch(createTestThunk(createdTest));
+    dispatch(updateTestThunk(updatedTest, id));
     history.push("/tests");
   };
 
-  const handleCancelClick = (e) => {
+  const handleCancelClickCancel = (e) => {
     e.preventDefault();
+    history.push("/tests");
+  };
+
+  const handleCancelClickDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteTestId(test, id))
     history.push("/tests");
   };
 
 
     return (
       <form className='test-form' onSubmit={handleSubmit}>
-        <h1>Create a Quesiton</h1>
-        <input type="text" placeholder="Address"value={address} onChange={updateAddress}/>
+        <h1>Edit a Quesiton</h1>
+        <input type="text" placeholder="Address" value={address} onChange={updateAddress}/>
         <input type="text" placeholder="City" value={city} onChange={updateCity}/>
         <input type="text" placeholder="State" value={state} onChange={updateState}/>
         <input type="text" placeholder="Country"value={country} onChange={updateCountry}/>
@@ -60,8 +74,9 @@ function TestFormPage() {
         <input type="text" placeholder="Details" value={details} onChange={updateDetails} required/>
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay}/>
         <button type="submit">Submit Test</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
+        <button type="button" onClick={handleCancelClickCancel}>Cancel</button>
+        <button type="button" onClick={handleCancelClickDelete}>Delete</button>
       </form>
   );
 }
-  export default TestFormPage;
+  export default TestEditPage;

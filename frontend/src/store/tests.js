@@ -1,7 +1,10 @@
 import {csrfFetch} from './csrf';
 
 const GET_ALL_TESTS = 'tests/GET_ALL_TESTS';
+const GET_A_TEST = 'tests/GET_A_TEST';
 const CREATE_TEST = 'tests/CREATE_TEST';
+const UPDATE_TEST = 'tests/UPDATE_TEST';
+const DELETE_TEST = 'tests/DELETE_TEST';
 
 //Action Creator
 const getTests = (tests) => ({
@@ -9,9 +12,24 @@ const getTests = (tests) => ({
     tests,
 })
 
+const getATest = (test) => ({
+  type: GET_A_TEST,
+  test,
+})
+
 const createTests = (createdTest) => ({
     type: CREATE_TEST,
-    createdTest
+    createdTest,
+})
+
+const updateTest = (test) => ({
+    type: UPDATE_TEST,
+    test,
+})
+
+const deleteTest = (test) => ({
+  type: DELETE_TEST,
+  test,
 })
 
 //Thunks
@@ -21,8 +39,14 @@ export const getTestsThunk = () => async(dispatch) => {
  dispatch(getTests(data))
 }
 
+export const getTest = (id) => async(dispatch) => {
+  const response = await csrfFetch(`/api/tests/${id}`)
+  const data = await response.json();
+  dispatch(getATest(data))
+ }
+
 export const createTestThunk = (createdTest) => async(dispatch) => {
-  const response = await csrfFetch("/api/tests/create", {
+  const response = await csrfFetch('/api/tests/create', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,13 +60,39 @@ export const createTestThunk = (createdTest) => async(dispatch) => {
   }
 };
 
+export const deleteTestId = (test, id) => async(dispatch) => {
+  const response = await csrfFetch(`/api/tests/${id}`, {
+    method: 'delete',
+ });
+ if(response.ok) {
+  const delTest = await response.json();
+  dispatch(deleteTest(delTest));
+  return delTest;
+ }
+};
+
+export const updateTestThunk = (updatedTest, id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/tests/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTest),
+      });
+      if (response.ok) {
+        const test = await response.json();
+        dispatch(updateTest(test));
+        return;
+      }
+    }
+
+//Reducer
 const initialState = {};
 
 export const testReducer = (state = initialState, action) => {
     let newState = {...state};
     switch(action.type) {
         case GET_ALL_TESTS:
-            console.log(action.tests)
             action.tests.forEach((test) => {
                return newState[test.id] = test;
             });
@@ -54,6 +104,13 @@ export const testReducer = (state = initialState, action) => {
                   [action.createdTest.id]: action.createdTest,
                 };
             }
+            return newState
+        case UPDATE_TEST:
+              newState = Object.assign({}, state);
+              newState.test = null;
+            return newState
+        case DELETE_TEST:
+            delete newState[action.test.id]
             return newState
         default:
             return state;

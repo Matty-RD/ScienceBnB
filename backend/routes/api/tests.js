@@ -7,10 +7,18 @@ router.get('/', asyncHandler(async(req,res) => {
     return res.json(allTests);
 }));
 
+router.get('/:id', asyncHandler(async(req,res) => {
+    const id = req.params.id;
+    const oneTest = await db.Test.findByPk(Number(id));
+    const {userId, address, city, state, country, name, details, pay} = oneTest;
+    console.log(userId, address, city, state, country, name, details, pay)
+    return res.json(oneTest);
+}));
+
 router.post('/create', asyncHandler(async(req,res) => {
     const {userId, address, city, state, country, name, details, pay} = req.body
     const newTest = await db.Test.create({
-        userId: 1,
+        userId,
         address: "test",
         city: "test",
         state: "test",
@@ -22,18 +30,19 @@ router.post('/create', asyncHandler(async(req,res) => {
     return res.json(newTest)
 }));
 
-// router.update('/', asyncHandler(async(req,res) => {
-//     console.log('Route Hit');
-//     const allTests = await db.Test.findAll();
-//     console.log(allTests)
-//     return res.json(allTests);
-// }));
+router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
+    console.log(req.body.id)
+    const test = await db.Test.findByPk(req.body.id);
+    const {userId, address, city, state, country, name, details, pay} = req.body
+     const newTest = await test.update(req.body)
+     return res.json(newTest);
+    })
+  );
 
-// router.delete('/', asyncHandler(async(req,res) => {
-//     console.log('Route Hit');
-//     const allTests = await db.Test.findAll();
-//     console.log(allTests)
-//     return res.json(allTests);
-// }));
+router.delete('/:id(\\d+)', asyncHandler(async(req,res) => {
+    const oldTest = await db.Test.findByPk(req.params.id);
+			await oldTest.destroy();
+			return res.json({id: oldTest.id})
+}));
 
 module.exports = router;
