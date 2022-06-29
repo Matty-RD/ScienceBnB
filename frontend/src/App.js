@@ -10,6 +10,8 @@ import TestsPage from './components/TestsPage';
 import TestFormPage from './components/TestFormPage';
 import HomePage from './components/HomePage';
 import TestEditPage from './components/TestEditPage';
+import ReviewPage from './components/ReviewPage';
+import ReviewFormPage from './components/ReviewFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +39,12 @@ function App() {
           </Route>
           <Route path="/test/:id">
             <TestEditPage />
+          </Route>
+          <Route exact path="/reviews/create">
+            <ReviewFormPage />
+          </Route>
+          <Route path="/reviews">
+            <ReviewPage />
           </Route>
           <Route path="/">
             <HomePage />
