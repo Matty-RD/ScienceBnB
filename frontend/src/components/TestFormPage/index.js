@@ -10,7 +10,7 @@ function TestFormPage() {
   const user = useSelector(state => state.session.user)
 
   const[userId] = useState(user.id);
-  
+
   const [url, setUrl] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -62,7 +62,7 @@ function TestFormPage() {
         <input type="text" placeholder="State" value={state} onChange={updateState}required/>
         <input type="text" placeholder="Country"value={country} onChange={updateCountry}required/>
         <input type="text" placeholder="Name" value={name} onChange={updateName} required/>
-        <input type="text" placeholder="Details" value={details} onChange={updateDetails} required/>
+        <input type="text" placeholder="Detail Text" value={details} onChange={updateDetails} required/>
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay}required/>
         <button type="submit">Submit Test</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
