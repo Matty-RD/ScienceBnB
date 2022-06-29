@@ -11,7 +11,6 @@ router.get('/:id', asyncHandler(async(req,res) => {
     const id = req.params.id;
     const oneTest = await db.Test.findByPk(Number(id));
     const {userId, address, city, state, country, name, details, pay} = oneTest;
-    console.log(userId, address, city, state, country, name, details, pay)
     return res.json(oneTest);
 }));
 

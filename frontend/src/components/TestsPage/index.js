@@ -25,13 +25,23 @@ function TestsPage() {
               history.push(`/test/${test.id}`);
             };
 
+            const handleClickReviews = (e) => {
+              e.preventDefault();
+              history.push(`/reviews`);
+            };
+
+            const handleClickCreateReviews = (e) => {
+              e.preventDefault();
+              history.push(`/reviews/create`);
+            };
+
             return (
               <ul key={test.id}>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
-                <button type="button" onClick={handleClick}>
-                  Edit
-                </button>
+                <button type="button" onClick={handleClick}>Edit</button>
+                <button type="button" onClick={handleClickReviews}>Show Reviews</button>
+                <button type="button" onClick={handleClickCreateReviews}>Post Reviews</button>
               </ul>
             );
           })}
@@ -49,13 +59,23 @@ function TestsPage() {
               history.push(`/login`);
             };
 
+            const handleClickReviews = (e) => {
+              e.preventDefault();
+              history.push(`/reviews`);
+            };
+
+            const handleClickCreateReviews = (e) => {
+              e.preventDefault();
+              history.push(`/create`);
+            };
+
             return (
               <ul key={test.id}>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
-                <button type="button" onClick={handleClick}>
-                  Login to Edit.
-                </button>
+                <button type="button" onClick={handleClick}>Login to Edit.</button>
+                <button type="button" onClick={handleClickReviews}>Show Reviews</button>
+                <button type="button" onClick={handleClickCreateReviews}>Post Reviews</button>
               </ul>
             );
           })}
