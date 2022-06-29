@@ -15,11 +15,14 @@ function TestsPage() {
     dispatch(getTestsThunk());
   }, [dispatch]);
 
+
+
   if (sessionUser) {
     return (
       <>
         {testsObject &&
           testsArray.map((test) => {
+
             const handleClick = (e) => {
               e.preventDefault();
               history.push(`/test/${test.id}`);
@@ -34,9 +37,9 @@ function TestsPage() {
               e.preventDefault();
               history.push(`/reviews/create`);
             };
-
             return (
               <ul key={test.id}>
+                <img className="photo" src={test.url} alt={"Science"} width="500" height="500"/>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
                 <button type="button" onClick={handleClick}>Edit</button>
