@@ -23,6 +23,7 @@ function ReviewFormPage() {
       review,
       rating
     };
+    
     e.preventDefault();
     dispatch(createReviewThunk(createdReview));
     history.push("/tests");

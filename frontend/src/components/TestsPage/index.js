@@ -69,7 +69,7 @@ function TestsPage() {
 
             const handleClickCreateReviews = (e) => {
               e.preventDefault();
-              history.push(`/create`);
+              history.push(`/login`);
             };
 
             return (
@@ -79,7 +79,7 @@ function TestsPage() {
                 <li>{test.details}</li>
                 <button type="button" onClick={handleClick}>Login to Edit.</button>
                 <button type="button" onClick={handleClickReviews}>Show Reviews</button>
-                <button type="button" onClick={handleClickCreateReviews}>Post Reviews</button>
+                <button type="button" onClick={handleClickCreateReviews}>log in to Post A Review</button>
               </ul>
             );
           })}
