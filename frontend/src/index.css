@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+@font-face {
+    font-family: 'PF Arma Five', sans-serif;
+    src: url('http://fonts.cdnfonts.com/css/pf-arma-five');
+}
+
+html {
+    display: flex;
+    font-family: 'PF Arma Five', sans-serif;
+    color: lime;
+    background: black;
+}
