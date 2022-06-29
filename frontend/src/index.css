@@ -7,12 +7,11 @@
 html {
     display: flex;
     font-family: 'PF Arma Five', sans-serif;
-    text-shadow: 2px 2px #CB2B92;
-    color: lime;
+    text-shadow: 2px 2px #660000;
+    color: #7EF9FF;
     background: black;
 }
 
 ul {
     list-style: none;
 }
-
