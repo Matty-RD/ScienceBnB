@@ -10,14 +10,15 @@ router.get('/', asyncHandler(async(req,res) => {
 router.get('/:id', asyncHandler(async(req,res) => {
     const id = req.params.id;
     const oneTest = await db.Test.findByPk(Number(id));
-    const {userId, address, city, state, country, name, details, pay} = oneTest;
+    const {userId, url, address, city, state, country, name, details, pay} = oneTest;
     return res.json(oneTest);
 }));
 
 router.post('/create', asyncHandler(async(req,res) => {
-    const {userId, address, city, state, country, name, details, pay} = req.body
+    const {userId, url, address, city, state, country, name, details, pay} = req.body
     const newTest = await db.Test.create({
         userId,
+        url,
         address,
         city,
         state,
@@ -32,7 +33,7 @@ router.post('/create', asyncHandler(async(req,res) => {
 router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
     console.log(req.body.id)
     const test = await db.Test.findByPk(req.body.id);
-    const {userId, address, city, state, country, name, details, pay} = req.body
+    const {userId, url, address, city, state, country, name, details, pay} = req.body
      const newTest = await test.update(req.body)
      return res.json(newTest);
     })
