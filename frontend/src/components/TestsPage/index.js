@@ -39,7 +39,7 @@ function TestsPage() {
             };
             return (
               <ul key={test.id}>
-                <img className="photo" src={test.url} alt={"Science"} width="500" height="500"/>
+                <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
                 <button type="button" onClick={handleClick}>Edit</button>

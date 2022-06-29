@@ -10,6 +10,8 @@ function TestFormPage() {
   const user = useSelector(state => state.session.user)
 
   const[userId] = useState(user.id);
+  
+  const [url, setUrl] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -18,6 +20,7 @@ function TestFormPage() {
   const [details, setDetails] = useState("");
   const [pay, setPay] = useState(0);
 
+  const updateUrl = (e) => setUrl(e.target.value)
   const updateAddress = (e) => setAddress(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
   const updateState = (e) => setState(e.target.value);
@@ -30,6 +33,7 @@ function TestFormPage() {
   const handleSubmit = async (e) => {
     const createdTest = {
       userId,
+      url,
       address,
       city,
       state,
@@ -52,6 +56,7 @@ function TestFormPage() {
     return (
       <form className='test-form' onSubmit={handleSubmit}>
         <h1>Create a Test</h1>
+        <input type="text" placeholder="Image Url" value={url} onChange={updateUrl}required/>
         <input type="text" placeholder="Address" value={address} onChange={updateAddress}required/>
         <input type="text" placeholder="City" value={city} onChange={updateCity}required/>
         <input type="text" placeholder="State" value={state} onChange={updateState}required/>

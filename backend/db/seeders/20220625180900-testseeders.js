@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         userId: 2,
-        url: 'https://static.wikia.nocookie.net/rickandmorty/images/8/88/Garage.png/revision/latest?cb=20160901004209',
+        url: 'https://funwithbonus.com/wp-content/uploads/MortyMegaSeeds.jpg',
         address:'6910 ask after applying',
         city: 'Seattle',
         state: 'Washington',
