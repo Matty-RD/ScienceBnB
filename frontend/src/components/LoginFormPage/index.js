@@ -18,6 +18,19 @@ function LoginFormPage() {
     history.push(`/signup`);
   };
 
+  const demoLogin = () => {
+    dispatch(sessionActions.login({
+        credential: 'Demo-lition',
+        password: 'password'
+    })).then(
+        (data) => {
+            if (data.user)
+                return history.push('/home')
+        }
+    );
+};
+
+
   if (sessionUser) return (
     <Redirect to="/tests" />
   );
@@ -56,6 +69,7 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button type="submit" onClick={demoLogin}>Demo User</button>
       <button onClick={handleClickSignup}>No Account?</button>
     </form>
   );

@@ -6,10 +6,13 @@
 
 html {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: 'PF Arma Five', sans-serif;
     text-shadow: 2px 2px #660000;
     color: #7EF9FF;
-    background: black;
+    background: #333333;
 }
 
 ul {

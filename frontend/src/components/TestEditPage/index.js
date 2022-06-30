@@ -30,9 +30,6 @@ function TestEditPage() {
   const updateDetails= (e) => setDetails(e.target.value);
   const updatePay = (e) => setPay(e.target.value);
 
-  // useEffect(() => {
-  //   dispatch(getTest(id))
-  // },[dispatch, id])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
