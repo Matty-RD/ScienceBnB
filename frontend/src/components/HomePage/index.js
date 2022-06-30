@@ -4,9 +4,9 @@ function HomePage() {
 
     return (
       <>
-      <body className="home-page">
+      <div className="home-page">
       <h1>Home Page</h1>
-      </body>
+      </div>
       </>
     );
 }

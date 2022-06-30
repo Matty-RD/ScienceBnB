@@ -40,10 +40,10 @@ function App() {
           <Route path="/test/:id">
             <TestEditPage />
           </Route>
-          <Route exact path="/reviews/create">
+          <Route exact path="/reviews/create/:id">
             <ReviewFormPage />
           </Route>
-          <Route path="/reviews">
+          <Route path="/reviews/test/:id">
             <ReviewPage />
           </Route>
           <Route path="/">

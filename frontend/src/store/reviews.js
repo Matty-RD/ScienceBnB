@@ -21,14 +21,14 @@ const deleteReview = (review) => ({
 })
 
 //Thunks
-export const getAllReviews = () => async(dispatch) => {
-    const response = await csrfFetch('/api/reviews')
+export const getAllReviews = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/reviews/test/${id}`)
     const data = await response.json();
     dispatch(getReviews(data))
    }
 
-export const createReviewThunk = (createdReview) => async(dispatch) => {
-const response = await csrfFetch('/api/reviews/create', {
+export const createReviewThunk = (createdReview, id) => async(dispatch) => {
+const response = await csrfFetch(`/api/reviews/create/${id}`, {
     method: "POST",
     headers: {
     "Content-Type": "application/json",
