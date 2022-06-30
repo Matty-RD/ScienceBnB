@@ -41,8 +41,19 @@ router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 router.delete('/:id(\\d+)', asyncHandler(async(req,res) => {
     const oldTest = await db.Test.findByPk(req.params.id);
-			await oldTest.destroy();
-			return res.json({id: oldTest.id})
+    const allReviews = await db.Review.findAll({ where: { testId: req.params.id } })
+    const allEnlists = await db.Enlist.findAll({ where: { testId: req.params.id } })
+    for (let i = 0; i < allReviews.length; i++) {
+        const review = allReviews[i]
+        review.destroy()
+    }
+    for (let i = 0; i < allEnlists.length; i++) {
+        const enlist = allEnlists[i]
+        enlist.destroy()
+    }
+    await oldTest.destroy();
+    return res.json({id: oldTest.id})
 }));
+
 
 module.exports = router;

@@ -60,10 +60,11 @@ const initialState = {};
     let newState = {...state};
     switch(action.type) {
         case GET_ALL_REVIEWS:
+            const neoState = {}
             action.reviews.forEach((review) => {
-               return newState[review.id] = review;
+               return neoState[review.id] = review;
             });
-            return newState;
+            return neoState;
         case CREATE_REVIEW:
             if (!state[action.createdReview.id]) {
                 newState = {
