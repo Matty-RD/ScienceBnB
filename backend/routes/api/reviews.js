@@ -2,16 +2,20 @@ const router = require('express').Router();
 const asyncHandler = require("express-async-handler");
 const db = require("../../db/models");
 
-router.get('/', asyncHandler(async(req,res) => {
-    const allReviews = await db.Review.findAll();
+router.get('/test/:id', asyncHandler(async(req,res) => {
+    const allReviews = await db.Review.findAll({
+        where: {
+            testId: req.params.id
+          }
+    });
     return res.json(allReviews);
 }));
 
-router.post('/create', asyncHandler(async(req,res) => {
-    const {userId, review, rating} = req.body
+router.post('/create/:id', asyncHandler(async(req,res) => {
+    const {userId, testId, review, rating} = req.body
     const newReview = await db.Review.create({
         userId,
-        testId: 1,
+        testId,
         review,
         rating
     });
@@ -24,17 +28,6 @@ router.delete('/:id(\\d+)', asyncHandler(async(req,res) => {
 			return res.json({id: oldReview.id})
 }));
 
-// router.get('/:id', asyncHandler(async(req,res) => {
-//     const id = req.params.id;
-//     const reviews = await db.Review.findAll({
-//         where: {
-//             userId: {
-//                 id
-//             }
-//         }
-//     });
-//     console.log(reviews)
-//     return res.json(reviews);
-// }));
+
 
 module.exports = router;
