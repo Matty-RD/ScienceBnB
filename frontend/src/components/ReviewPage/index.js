@@ -7,6 +7,7 @@ function ReviewPage() {
 const dispatch = useDispatch();
 const history = useHistory();
 
+const user = useSelector(state => state.session.user)
 const reviewsObject = useSelector((state) => state.reviews);
 const reviewsArray = Object.values(reviewsObject);
 const urlArray = window.location.href.split('/');
@@ -27,16 +28,33 @@ const num = Number(urlArray[urlArray.length - 1]);
         }
       };
 
+      const handleClick = (e) => {
+        e.preventDefault();
+        history.push("/tests");
+      };
+
 return (
     <>
       {reviewsObject && reviewsArray.map((review) => {
+        if(user.id === review.userId) {
           return (
             <ul key={review.id}>
               <li>{review.userId}</li>
               <li>{review.review}</li>
               <button type="button" id={review.id} onClick={handleClickDelete}>Delete</button>
+              <button type="button"  onClick={handleClick}>Return to Test</button>
             </ul>
           );
+        } else {
+          return (
+            <ul key={review.id}>
+              <li>{review.userId}</li>
+              <li>{review.review}</li>
+              <button type="button"  onClick={handleClick}>Return to Test</button>
+            </ul>
+          );
+        }
+
         })}
     </>
   );
