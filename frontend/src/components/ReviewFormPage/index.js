@@ -73,8 +73,10 @@ function ReviewFormPage() {
            <option value="5">5</option>
           </select>
         </label>
+        <div>
         <button type="submit">Submit Review</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
+        </div>
       </form>
   );
 }

@@ -2,7 +2,6 @@ import { getTestsThunk } from "../../store/tests";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
-import {getAllReviews } from "../../store/reviews";
 
 function TestsPage() {
   const dispatch = useDispatch();
@@ -40,6 +39,7 @@ function TestsPage() {
               const testId = Number(e.target.id);
               history.push(`/reviews/create/${testId}`);
             };
+
             return (
               <ul key={test.id}>
                 <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>

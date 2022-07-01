@@ -105,8 +105,10 @@ function TestFormPage() {
         <input type="text" placeholder="Detail Text" value={details} onChange={updateDetails} />
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay}/>
         {errors.pay && <div>{errors.pay}</div>}
+        <div>
         <button type="submit">Submit Test</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
+        </div>
       </form>
   );
 }

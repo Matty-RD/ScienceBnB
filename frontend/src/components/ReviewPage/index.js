@@ -1,6 +1,6 @@
 import { deleteReviewId, getAllReviews } from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, forceUpdate, useState} from "react";
+import { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
 function ReviewPage() {
@@ -16,16 +16,16 @@ const num = Number(urlArray[urlArray.length - 1]);
         dispatch(getAllReviews(num))
       }, [dispatch, num]);
 
-  const handleClickDelete = (e) => {
-    e.preventDefault();
-    const buttonData = Number(e.target.id);
-    for (const review of reviewsArray) {
-      if(review.id === buttonData) {
-        dispatch(deleteReviewId(review, buttonData))
-        history.push(`/reviews/test/${buttonData}`);
-      }
-    }
-  };
+      const handleClickDelete = (e) => {
+        e.preventDefault();
+        const buttonData = Number(e.target.id);
+        for (const review of reviewsArray) {
+          if(review.id === buttonData) {
+            dispatch(deleteReviewId(review, buttonData))
+            history.push(`/reviews/test/${review.testId}`);
+          }
+        }
+      };
 
 return (
     <>

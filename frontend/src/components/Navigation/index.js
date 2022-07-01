@@ -37,6 +37,7 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
+
         <button onClick={handleClickLogin}>Log In</button>
         <button onClick={handleClickSignup}>Sign Up</button>
         <button onClick={handleClickTests}>Tests</button>
@@ -45,12 +46,15 @@ function Navigation({ isLoaded }) {
   }
 
   return (
+    <div className='navbar'>
     <ul>
+      <img src="https://i.imgur.com/Ru0cPOj.png" title="source: imgur.com" height='210' alt='science'/>
       <li>
         <button onClick={handleClickHome}>Home</button>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+  </div>
   );
 }
 

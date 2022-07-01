@@ -1,18 +1,15 @@
-
 html {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    background-color: grey;
     font-family: 'PF Arma Five', sans-serif;
-    text-shadow: 2px 2px #660000;
-    color: #7EF9FF;
-    background: #222222;
-    border: solid #333333 50px
+    text-shadow: 2px 2px #CB2B92;
 }
 
 ul {
     list-style: none;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 button {
@@ -73,4 +70,16 @@ button:after {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+body {
+    margin: 0px;
+    border: 0px;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    border: magenta solid;
+    padding: 40px;
 }
