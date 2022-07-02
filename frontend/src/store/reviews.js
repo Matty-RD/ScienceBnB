@@ -3,6 +3,8 @@ import {csrfFetch} from './csrf';
 const GET_ALL_REVIEWS = 'reviews/GET_ALL_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const DELETE_REVIEW = 'tests/DELETE_REVIEW';
+const CLEAR_REVIEW = 'reviews/CLEAR_REVIEW';
+
 
 //Action Creator
 const getReviews = (reviews) => ({
@@ -19,6 +21,10 @@ const deleteReview = (review) => ({
   type: DELETE_REVIEW,
   review,
 })
+
+export const clearReview = () => ({
+    type: CLEAR_REVIEW,
+  })
 
 //Thunks
 export const getAllReviews = (id) => async(dispatch) => {
@@ -76,6 +82,8 @@ const initialState = {};
         case DELETE_REVIEW:
             delete newState[action.review.id]
             return newState
+        case CLEAR_REVIEW:
+            return {};
         default:
             return state;
     }

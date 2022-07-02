@@ -2,6 +2,7 @@ import { getTestsThunk } from "../../store/tests";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import { clearReview } from "../../store/reviews";
 
 function TestsPage() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function TestsPage() {
     dispatch(getTestsThunk());
   }, [dispatch]);
 
+  
 
 
   if (sessionUser) {
@@ -30,6 +32,7 @@ function TestsPage() {
 
             const handleClickReviews = (e) => {
               e.preventDefault();
+              dispatch(clearReview());
               const testId = Number(e.target.id);
               history.push(`/reviews/test/${testId}`);
             };

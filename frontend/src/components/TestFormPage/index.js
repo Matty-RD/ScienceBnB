@@ -36,9 +36,13 @@ function TestFormPage() {
 
     let error = false;
     errorsObj = {...errorsObj};
-    if(url === '') {
-      errorsObj.url= "Requires Image Url";
-      error = true;
+    if (!url.includes(".jpg") && !url.includes(".png") && !url.includes(".JPG") && !url.includes(".PNG") && !url.includes("image")) {
+      errorsObj.url = "URL must be jpg/png or contain image"
+      error = true
+    }
+    else if (url.length < 4) {
+      errorsObj.url = "URL must be at least 4 characters."
+      error = true
     }
     if (address === '') {
       errorsObj.address = "Please provide a valid address!";
