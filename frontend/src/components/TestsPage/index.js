@@ -16,7 +16,7 @@ function TestsPage() {
     dispatch(getTestsThunk());
   }, [dispatch]);
 
-  
+
 
 
   if (sessionUser) {
@@ -44,14 +44,18 @@ function TestsPage() {
             };
 
             return (
+
               <ul key={test.id}>
+                <div>
                 <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
+                </div>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
                 <button type="button" onClick={handleClick}>Edit</button>
                 <button type="button" id={test.id} onClick={handleClickReviews}>Show Reviews</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Post Reviews</button>
               </ul>
+
             );
           })}
       </>
@@ -68,12 +72,6 @@ function TestsPage() {
               history.push(`/login`);
             };
 
-            const handleClickReviews = (e) => {
-              e.preventDefault();
-              const testId = Number(e.target.id);
-              history.push(`/reviews/test/${testId}`);
-            };
-
             const handleClickCreateReviews = (e) => {
               e.preventDefault();
               history.push(`/login`);
@@ -81,12 +79,14 @@ function TestsPage() {
 
             return (
               <ul key={test.id}>
-                  <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
+                  <div>
+                <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
+                </div>
                 <li>{test.name}</li>
                 <li>{test.details}</li>
-                <button type="button" onClick={handleClick}>Login to Edit.</button>
-                <button type="button" id={test.id} onClick={handleClickReviews}>Show Reviews</button>
-                <button type="button" onClick={handleClickCreateReviews}>log in to Post A Review</button>
+                <button type="button" onClick={handleClick}>Login to Edit</button>
+                <button type="button" id={test.id} onClick={handleClickCreateReviews}>Log in to see Reviews</button>
+                <button type="button" onClick={handleClickCreateReviews}>Login to Post Reviews</button>
               </ul>
             );
           })}

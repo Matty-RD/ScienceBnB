@@ -1,4 +1,6 @@
 html {
+    display: grid;
+    justify-content: center;
     background-color: grey;
     font-family: 'PF Arma Five', sans-serif;
     text-shadow: 2px 2px #CB2B92;
@@ -14,15 +16,14 @@ ul {
 
 button {
     width: 150px;
-    height: 50px;
-    border: none;
+    height: 25px;
+    border: blue 1px solid;
     outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
+    color: #7DF9FF;
+    background: black;
     position: relative;
     z-index: 0;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 body {
@@ -35,4 +36,10 @@ form {
     justify-content: center;
     border: magenta solid;
     padding: 40px;
+}
+
+div {
+    display: grid;
+    justify-content: center;
+    padding: 30px;
 }
