@@ -47,7 +47,7 @@ const num = Number(urlArray[urlArray.length - 1]);
           if(user.id === review.userId) {
             return (
               <>
-              <h1>REVIEW: #{review.id}</h1>
+              <h1>REVIEW: </h1>
               <ul key={review.id}>
                 <li>{review.userId}</li>
                 <li>{review.review}</li>
@@ -59,7 +59,7 @@ const num = Number(urlArray[urlArray.length - 1]);
           } else {
             return (
               <>
-              <h1>REVIEW: #{review.id}</h1>
+              <h1>REVIEW: </h1>
               <ul key={review.id}>
                 <li>Review: {review.review}</li>
                 <li>Rating: {review.rating}</li>

@@ -49,8 +49,12 @@ function TestsPage() {
                 <div>
                 <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
                 </div>
-                <li>{test.name}</li>
-                <li>{test.details}</li>
+                <div>
+                <li>Title: {test.name}</li>
+                <li>Address: {test.address}, City: {test.city}, State: {test.state}</li>
+                <li>Details: {test.details}</li>
+                <li>Pay: ${test.pay}</li>
+                </div>
                 <button type="button" onClick={handleClick}>Edit</button>
                 <button type="button" id={test.id} onClick={handleClickReviews}>Show Reviews</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Post Reviews</button>
@@ -79,11 +83,15 @@ function TestsPage() {
 
             return (
               <ul key={test.id}>
-                  <div>
+                <div>
                 <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
                 </div>
-                <li>{test.name}</li>
-                <li>{test.details}</li>
+                <div>
+                <li>Title: {test.name}</li>
+                <li>Address: {test.address}, City: {test.city}, State: {test.state}</li>
+                <li>Details: {test.details}</li>
+                <li>Pay: ${test.pay}</li>
+                </div>
                 <button type="button" onClick={handleClick}>Login to Edit</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Log in to see Reviews</button>
                 <button type="button" onClick={handleClickCreateReviews}>Login to Post Reviews</button>
