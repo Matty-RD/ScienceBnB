@@ -43,6 +43,12 @@ function TestsPage() {
               history.push(`/reviews/create/${testId}`);
             };
 
+            const enlistsPage = (e) => {
+              e.preventDefault();
+              const testId = Number(e.target.id);
+              history.push(`/enlist/${testId}`);
+            };
+
             return (
 
               <ul key={test.id}>
@@ -58,6 +64,7 @@ function TestsPage() {
                 <button type="button" onClick={handleClick}>Edit</button>
                 <button type="button" id={test.id} onClick={handleClickReviews}>Show Reviews</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Post Reviews</button>
+                <button type="button" id={test.id} onClick={enlistsPage}>Enlist</button>
               </ul>
 
             );
