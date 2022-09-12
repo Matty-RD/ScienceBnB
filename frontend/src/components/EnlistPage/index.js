@@ -2,6 +2,7 @@ import { getAllEnlists, createEnlistThunk, deleteEnlistThunk } from "../../store
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import './enlistPage.css'
 
 function EnlistPage() {
 const dispatch = useDispatch();
@@ -64,30 +65,38 @@ const [errors, setErrors] = useState(errorsObj);
     return (
         <>
         <h1>Enlists</h1>
+        <div>
+        <h3>User information is not shared with Testing staff to prevent Observer Bias. Adding yourself to Enlistment, means you will respond to give address at given time.</h3>
+        </div>
         {enlistArray.map((list) => {
           if(user.id === list.userId) {
             return (
               <>
+              <div className="enlist">
               <p>User Number: {list.userId}</p>
               <p>Starting Date: {list.startDate}</p>
               <button type="button" id={list.id} onClick={deleteEnlist}>Dropout</button>
+              </div>
               </>
             )
           } else {
             return (
               <>
+              <div className="enlist">
               <p>User Number: {list.userId}</p>
               <p>Starting Date: {list.startDate}</p>
+              </div>
               </>
             )
           }
           })}
-
+        <div>
         <input type="date" onChange={updateStartDate}></input>
         <ul>
         {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <button type="submit" onClick={addEnlistment}>Enlist</button>
+        </div>
         </>
       );
     }
