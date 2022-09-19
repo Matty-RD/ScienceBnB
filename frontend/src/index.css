@@ -1,6 +1,5 @@
 html {
-    display: grid;
-    max-width: 1114px;
+    display: flex;
     justify-content: center;
     font-family: 'PF Arma Five', sans-serif;
     background-color: #78B256;

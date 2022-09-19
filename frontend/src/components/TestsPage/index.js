@@ -87,18 +87,20 @@ function TestsPage() {
             };
 
             return (
-                <div className="postDiv">
-                <img className="Photo" src={test.url} alt={"Science"} width="300" height="300"/>
-                <p>Title: {test.name}</p>
-                <p>Address: {test.address}</p>
-                <p>Details: {test.details}</p>
-                <p>Pay: {test.pay}</p>
+              <div className="postDiv">
+                <img className="Photo" src={test.url} alt={"Science"} width="400" height="400"/>
+                <span>
+                <p><label>Title:</label> {test.name}</p>
+                <p><label>Address:</label> {test.address}</p>
+                <p><label>Details:</label> {test.details}</p>
+                <p><label>Pay:</label> ${test.pay}</p>
+                </span>
                 <div className="buttons">
                 <button type="button" onClick={handleClick}>Login to Edit</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Log in to see Reviews</button>
                 <button type="button" onClick={handleClickCreateReviews}>Login to Post Reviews</button>
                 </div>
-                </div>
+              </div>
             );
           })}
       </>
