@@ -1,0 +1,33 @@
+.buttons {
+    display: flex;
+    width: 800px;
+    margin-bottom: 5px;
+}
+
+.postDiv {
+    display: grid;
+    max-width: 800px;
+    justify-content: left;
+    margin: 25px;
+    border: solid 5px #59CBE8;
+    background-color: #939393;
+}
+
+.postDiv > .Photo {
+    margin-top: 10px;
+    padding-left: 192px;
+}
+
+span {
+    border: #13F8A6 2px solid;
+    margin: 10px;
+}
+
+span > p {
+    margin: 5px;
+}
+
+label {
+    font-size: 20px;
+    color: azure;
+}

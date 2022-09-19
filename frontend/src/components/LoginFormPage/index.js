@@ -51,6 +51,7 @@ function LoginFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <div>
         <input
           type="text"
           placeholder='Username or Email'
@@ -65,7 +66,8 @@ function LoginFormPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      <div>
+      </div>
+      <div className='buttons'>
       <button type="submit">Log In</button>
       <button type="submit" onClick={demoLogin}>Demo User</button>
       <button onClick={handleClickSignup}>No Account?</button>

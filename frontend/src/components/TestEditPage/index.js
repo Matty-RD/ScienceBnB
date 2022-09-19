@@ -108,6 +108,7 @@ function TestEditPage() {
 
     return (
       <form className='test-form' onSubmit={handleSubmit}>
+        <div className='testFormPage'>
         <h1>Edit a Test</h1>
         <ul>
         {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
@@ -120,10 +121,11 @@ function TestEditPage() {
         <input type="text" placeholder="Name" value={name} onChange={updateName}  />
         <input type="text" placeholder="Details" value={details} onChange={updateDetails}  />
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay} />
-        <div>
+        <div className='buttons'>
         <button type="submit">Submit Test</button>
         <button type="button" onClick={handleClickCancel}>Cancel</button>
         <button type="button" onClick={handleClickDelete}>Delete</button>
+        </div>
         </div>
       </form>
   );

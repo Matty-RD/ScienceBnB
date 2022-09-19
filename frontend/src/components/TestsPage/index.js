@@ -3,6 +3,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { clearReview } from "../../store/reviews";
+import './testPage.css';
 
 function TestsPage() {
   const dispatch = useDispatch();
@@ -22,8 +23,7 @@ function TestsPage() {
   if (sessionUser) {
     return (
       <>
-        {testsObject &&
-          testsArray.map((test) => {
+        { testsArray.map((test) => {
 
             const handleClick = (e) => {
               e.preventDefault();
@@ -50,22 +50,21 @@ function TestsPage() {
             };
 
             return (
-
-              <ul key={test.id}>
-                <div>
-                <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
-                </div>
-                <div>
-                <li>Title: {test.name}</li>
-                <li>Address: {test.address}, City: {test.city}, State: {test.state}</li>
-                <li>Details: {test.details}</li>
-                <li>Pay: ${test.pay}</li>
-                </div>
+              <div className="postDiv">
+                <img className="Photo" src={test.url} alt={"Science"} width="400" height="400"/>
+                <span>
+                <p><label>Title:</label> {test.name}</p>
+                <p><label>Address:</label> {test.address}</p>
+                <p><label>Details:</label> {test.details}</p>
+                <p><label>Pay:</label> ${test.pay}</p>
+                </span>
+                <div className="buttons">
                 <button type="button" onClick={handleClick}>Edit</button>
                 <button type="button" id={test.id} onClick={handleClickReviews}>Show Reviews</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Post Reviews</button>
                 <button type="button" id={test.id} onClick={enlistsPage}>Enlist</button>
-              </ul>
+                </div>
+              </div>
 
             );
           })}
@@ -76,8 +75,7 @@ function TestsPage() {
 
     return (
       <>
-        {testsObject &&
-          testsArray.map((test) => {
+        {testsArray.map((test) => {
             const handleClick = (e) => {
               e.preventDefault();
               history.push(`/login`);
@@ -89,20 +87,18 @@ function TestsPage() {
             };
 
             return (
-              <ul key={test.id}>
-                <div>
-                <img className="photo" src={test.url} alt={"Science"} width="300" height="300"/>
-                </div>
-                <div>
-                <li>Title: {test.name}</li>
-                <li>Address: {test.address}, City: {test.city}, State: {test.state}</li>
-                <li>Details: {test.details}</li>
-                <li>Pay: ${test.pay}</li>
-                </div>
+                <div className="postDiv">
+                <img className="Photo" src={test.url} alt={"Science"} width="300" height="300"/>
+                <p>Title: {test.name}</p>
+                <p>Address: {test.address}</p>
+                <p>Details: {test.details}</p>
+                <p>Pay: {test.pay}</p>
+                <div className="buttons">
                 <button type="button" onClick={handleClick}>Login to Edit</button>
                 <button type="button" id={test.id} onClick={handleClickCreateReviews}>Log in to see Reviews</button>
                 <button type="button" onClick={handleClickCreateReviews}>Login to Post Reviews</button>
-              </ul>
+                </div>
+                </div>
             );
           })}
       </>

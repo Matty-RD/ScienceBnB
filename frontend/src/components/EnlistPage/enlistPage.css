@@ -1,9 +1,8 @@
-p {
+h4 {
+    text-align: center;
     margin: 0px;
 }
 
-h3 {
-    width: 850px;
-    word-break: break-word;
-    overflow: normal;
-  }
+.headerBox {
+    padding-bottom: 100px;
+}

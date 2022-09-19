@@ -61,8 +61,10 @@ function ReviewFormPage() {
     return (
       <form className='review-form' onSubmit={handleSubmit}>
         <h1>Post a Review</h1>
-        <input type="text" placeholder="Review" value={review} onChange={updateReview}/>
         {errors.review && <div>{errors.review}</div>}
+        <div className="reviewBox">
+        <input type="text" placeholder="Review" value={review} onChange={updateReview}/>
+        <div className="reviewBox">
         <label>
           Rating
           <select value={rating} onChange={updateRating}>
@@ -73,7 +75,9 @@ function ReviewFormPage() {
            <option value="5">5</option>
           </select>
         </label>
-        <div>
+        </div>
+        </div>
+        <div className='buttons'>
         <button type="submit">Submit Review</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
         </div>

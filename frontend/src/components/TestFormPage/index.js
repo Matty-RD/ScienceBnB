@@ -96,6 +96,7 @@ function TestFormPage() {
 
     return (
       <form className='test-form' onSubmit={handleSubmit}>
+        <div className='testFormPage'>
         <h1>Create a Test</h1>
         <ul>
         {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
@@ -109,9 +110,10 @@ function TestFormPage() {
         <input type="text" placeholder="Detail Text" value={details} onChange={updateDetails} />
         <input type="number" placeholder="Pay" value={pay} onChange={updatePay}/>
         {errors.pay && <div>{errors.pay}</div>}
-        <div>
+        <div className='buttons'>
         <button type="submit">Submit Test</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
+        </div>
         </div>
       </form>
   );

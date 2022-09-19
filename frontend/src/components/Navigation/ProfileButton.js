@@ -47,8 +47,6 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fa-solid fa-atom"></i>
       </button>
-      <button onClick={handleClickTests}>Tests</button>
-      <button onClick={handleClickCreate}>Create Tests</button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
@@ -58,6 +56,8 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
+      <button onClick={handleClickTests}>Tests</button>
+      <button onClick={handleClickCreate}>Create Tests</button>
     </>
   );
 }

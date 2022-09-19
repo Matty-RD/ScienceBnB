@@ -47,13 +47,11 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className='navbar'>
-    <ul>
       <img src="https://i.imgur.com/Ru0cPOj.png" title="source: imgur.com" height='210' alt='science'/>
-      <li>
+      <div className='buttons'>
         <button onClick={handleClickHome}>Home</button>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
   </div>
   );
 }

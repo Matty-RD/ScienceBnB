@@ -46,26 +46,30 @@ const num = Number(urlArray[urlArray.length - 1]);
         reviewsArray.map((review) => {
           if(user.id === review.userId) {
             return (
-              <>
+              <div className="reviewPage">
               <h1>REVIEW: </h1>
-              <ul key={review.id}>
-                <li>{review.userId}</li>
-                <li>{review.review}</li>
+              <span key={review.id}>
+                <p>{review.userId}</p>
+                <p>{review.review}</p>
+                <div className="buttons">
                 <button type="button" id={review.id} onClick={handleClickDelete}>Delete</button>
                 <button type="button"  onClick={handleClick}>Return to Test</button>
-              </ul>
-              </>
+                </div>
+              </span>
+              </div>
             );
           } else {
             return (
-              <>
+              <div className="reviewPage">
               <h1>REVIEW: </h1>
-              <ul key={review.id}>
-                <li>Review: {review.review}</li>
-                <li>Rating: {review.rating}</li>
+              <span key={review.id}>
+                <p><label>Review:</label> {review.review}</p>
+                <p><label>Rating:</label> {review.rating}</p>
+                <div className="buttons">
                 <button type="button"  onClick={handleClick}>Return to Test</button>
-              </ul>
-              </>
+                </div>
+              </span>
+              </div>
             );
           }
           })}

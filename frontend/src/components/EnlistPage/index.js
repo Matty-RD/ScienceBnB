@@ -65,27 +65,28 @@ const [errors, setErrors] = useState(errorsObj);
     return (
         <>
         <h1>Enlists</h1>
-        <div>
-        <h3>User information is not shared with Testing staff to prevent Observer Bias. Adding yourself to Enlistment, means you will respond to give address at given time.</h3>
+        <div className="headerBox">
+        <h4>User information is not shared with Testing staff to prevent Observer Bias. Adding yourself to Enlistment,</h4>
+        <h4>means you will respond to give address at given time.</h4>
         </div>
         {enlistArray.map((list) => {
           if(user.id === list.userId) {
             return (
               <>
-              <div className="enlist">
-              <p>User Number: {list.userId}</p>
-              <p>Starting Date: {list.startDate}</p>
+              <span className="enlist">
+              <p><label>User Number:</label> {list.userId}</p>
+              <p><label>Starting DAte:</label> {list.startDate}</p>
               <button type="button" id={list.id} onClick={deleteEnlist}>Dropout</button>
-              </div>
+              </span>
               </>
             )
           } else {
             return (
               <>
-              <div className="enlist">
-              <p>User Number: {list.userId}</p>
-              <p>Starting Date: {list.startDate}</p>
-              </div>
+              <span className="enlist">
+              <p><label>User Number:</label> {list.userId}</p>
+              <p><label>Starting DAte:</label> {list.startDate}</p>
+              </span>
               </>
             )
           }
